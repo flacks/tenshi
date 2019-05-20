@@ -8,7 +8,7 @@ This utility is meant to work on Linux. It is untested on Mac, and will probably
 
 You will want to add `include: "local-blocking-data.conf"` to your Unbound config to use the result.
 
-This package is available on crates.io at https://crates.io/crates/tenshi, and the Arch User Respository at https://aur.archlinux.org/packages/tenshi.
+This package is available on crates.io at https://crates.io/crates/tenshi, and the Arch User Respository at https://aur.archlinux.org/packages/tenshi-rs.
 
 ## Installation
 
@@ -27,7 +27,7 @@ This utility has been tested to work with Rust 1.34.2.
 ### Arch Linux
 
 ```
-git clone https://aur.archlinux.org/tenshi.git
+git clone https://aur.archlinux.org/tenshi-rs.git
 cd tenshi
 makepkg -i
 ```

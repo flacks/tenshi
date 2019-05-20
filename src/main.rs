@@ -24,7 +24,7 @@ fn main() {
             .expect("Failed to read line");
         match confirm.trim() {
             "y" => {
-                println!("");
+                println!();
                 break;
             }
             "q" => std::process::exit(0),
