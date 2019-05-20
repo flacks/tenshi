@@ -1,9 +1,9 @@
 [package]
 name = "tenshi"
-version = "0.1.4"
+version = "0.2.0"
 authors = ["Jean Lucas <jean@4ray.co>"]
 edition = "2018"
-description = "Unbound local-data generator for curated hosts files"
+description = "Unbound local-zone generator for curated hosts files"
 repository = "https://github.com/flacks/tenshi"
 readme = "README.md"
 keywords = ["unbound", "hosts", "adware", "malware"]

@@ -1,6 +1,6 @@
 # tenshi
 
-This utility fetches a curated hosts file, generates Unbound local-data from it, and saves the result in `/etc/unbound/local-blocking-data.conf`.
+This utility fetches a curated hosts file, generates Unbound local-zone entries from it, and saves them to `/etc/unbound/local-blocking-data.conf`.
 
 At the moment, only Steven Black's hosts file is used. Source: https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts.
 
