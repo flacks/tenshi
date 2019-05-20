@@ -4,7 +4,7 @@ This utility fetches a curated hosts file, generates Unbound local-data from it,
 
 At the moment, only Steven Black's hosts file is used. Source: https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts.
 
-This utility is meant to work on Linux. It is untested on Mac, and probably will not work on Windows.
+This utility is meant to work on Linux. It is untested on Mac, and will probably not work on Windows.
 
 You will want to add `include: "local-blocking-data.conf"` to your Unbound config to use the result.
 
@@ -12,7 +12,7 @@ This package is available on crates.io at https://crates.io/crates/tenshi, and t
 
 ## Installation
 
-### Prerequisite
+### Prerequisites
 
 Install either [rustup](http://rustup.rs/) or `rust` using your favorite package manager.
 
@@ -38,7 +38,7 @@ makepkg -i
 git clone https://github.com/flacks/tenshi.git
 git checkout $(git tag | tail -n 1) # Optional
 cd tenshi
-cargo build --release --locked
+cargo build --release
 cargo install --path .
 ```
 
