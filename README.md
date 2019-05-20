@@ -44,9 +44,11 @@ cargo install --path .
 
 ## Synopsis
 
-`sudo tenshi`, excluding `sudo` if you have write access to `/etc/unbound/local-blocking-data.conf`.
+If installed with Cargo or built from source, run `sudo tenshi`, excluding `sudo` if you have write access to `/etc/unbound/local-blocking-data.conf`.
 
-Utility will prompt to continue. For promptless execution, run `echo y | sudo tenshi`.
+If installed from the Arch User Repository, run `sudo tenshi-rs`, heeding the same `sudo` exception above.
+
+Utility will prompt to continue. For promptless execution, prepend `echo y |` to command.
 
 ## To do
 
