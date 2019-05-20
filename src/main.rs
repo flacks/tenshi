@@ -2,18 +2,19 @@ use std::error::Error;
 use std::io::{stdin, stdout, BufWriter, Write};
 
 fn main() {
-    println!("tenshi 0.2.0 :: Jean Lucas <jean@4ray.co>\n");
+    println!("Tenshi 0.2.1 :: Jean Lucas <jean@4ray.co>
 
-    println!("- This utility will fetch Steven Black's adware + malware hosts file and generate Unbound local-zone entries from it");
-    println!("- Data will be saved to /etc/unbound/local-blocking-data.conf");
-    println!("- You must have permission to write to that file");
-    println!(
-        "- Add 'include: \"local-blocking-data.conf\"' to your Unbound config to use the result\n"
-    );
+    Tenshi fetches Steven Black's adware + malware hosts file and generates Unbound local-zone entries from it
+
+    Data will be saved to /etc/unbound/local-blocking-data.conf
+
+    Run Tenshi as a user with write access to that file
+
+    Add 'include: \"local-blocking-data.conf\"' to your Unbound config to use the result\n");
 
     // Prompt to continue
     loop {
-        print!("Enter \"y\" to continue, \"q\" to quit: ");
+        print!("Enter to continue, \"q\" to quit: ");
         stdout().flush().unwrap();
 
         let mut confirm = String::new();
@@ -21,17 +22,17 @@ fn main() {
             .read_line(&mut confirm)
             .expect("Failed to read line");
         match confirm.trim() {
-            "y" => {
+            "" => {
                 println!();
                 break;
             }
             "q" => std::process::exit(0),
-            _ => println!("\nInvalid response\n"),
+            _ => println!("\n    Invalid response\n"),
         }
     }
 
-    // Check write permission
-    print!("Checking write permission... ");
+    // Confirm write access
+    print!("    Confirming write access... ");
     stdout().flush().unwrap();
     let path = std::path::Path::new("/etc/unbound/local-blocking-data.conf");
     let display = path.display();
@@ -49,7 +50,7 @@ fn main() {
 
     // Fetch hosts file
     let client = reqwest::Client::new();
-    print!("Fetching hosts file... ");
+    print!("    Fetching hosts file... ");
     stdout().flush().unwrap();
     let mut request = client
         .get("https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts")
@@ -61,10 +62,10 @@ fn main() {
     // Gather results using regex and write local-zone entries to file buffer
     let re = regex::Regex::new(r"(?m)^0.0.0.0 (\S+)").unwrap();
     let mut hosts_buf = BufWriter::new(file);
-    print!("Generating local-zone entries... ");
+    print!("    Generating local-zone entries... ");
     stdout().flush().unwrap();
     for cap in re.captures_iter(&hosts) {
         writeln!(&mut hosts_buf, "local-zone: \"{}\" refuse", &cap[1]).unwrap();
     }
-    println!("Success")
+    println!("Success\n")
 }

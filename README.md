@@ -1,54 +1,55 @@
-# tenshi
+# Tenshi
 
-This utility fetches a curated hosts file, generates Unbound local-zone entries from it, and saves them to `/etc/unbound/local-blocking-data.conf`.
+[![crates.io](https://img.shields.io/crates/v/tenshi.svg)](https://crates.io/crates/tenshi)
+[![aur](https://img.shields.io/aur/version/tenshi-rs.svg)](https://aur.archlinux.org/packages/tenshi-rs)
 
-At the moment, only Steven Black's hosts file is used. Source: https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts.
+Tenshi is a fast CLI utility that fetches a curated hosts file, generates [Unbound](https://nlnetlabs.nl/projects/unbound/about/) local-zone entries from it, and saves them to `/etc/unbound/local-blocking-data.conf`.
 
-This utility is meant to work on Linux. It is untested on Mac, and will probably not work on Windows.
+At the moment, only [Steven Black's hosts file](https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts) is used.
+
+Tenshi is primarily written to work on Linux, but it will likely work on the BSDs. It is untested on Macintosh, and will probably not work on Windows.
 
 You will want to add `include: "local-blocking-data.conf"` to your Unbound config to use the result.
-
-This package is available on crates.io at https://crates.io/crates/tenshi, and the Arch User Respository at https://aur.archlinux.org/packages/tenshi-rs.
 
 ## Installation
 
 ### Prerequisites
 
-Install either [rustup](http://rustup.rs/) or `rust` using your favorite package manager.
+Install either [rustup](https://rustup.rs) or `rust` using your favorite package manager. Tenshi is known to build against Rust 1.34.2.
 
-This utility has been tested to work with Rust 1.34.2.
-
-`sudo` is needed if you do not have write access to `/etc/unbound/local-blocking-data.conf`.
+Tenshi must be run as a user that has write access to `/etc/unbound/local-blocking-data.conf`.
 
 ### Build with Cargo
 
 `cargo install tenshi`
 
-### Arch Linux
-
-```
-git clone https://aur.archlinux.org/tenshi-rs.git
-cd tenshi
-makepkg -i
-```
-
 ### Build from source
 
 ```
 git clone https://github.com/flacks/tenshi.git
-git checkout $(git tag | tail -n 1) # Optional
 cd tenshi
+git checkout $(git tag | tail -n 1)
 cargo build --release
 cargo install --path .
 ```
 
+### Arch Linux
+
+```
+git clone https://aur.archlinux.org/tenshi-rs.git
+cd tenshi-rs
+makepkg -i
+```
+
 ## Synopsis
 
-If installed with Cargo or built from source, run `sudo tenshi`, excluding `sudo` if you have write access to `/etc/unbound/local-blocking-data.conf`.
+See note on write access in the **Prerequisites** section.
 
-If installed from the Arch User Repository, run `sudo tenshi-rs`, heeding the same `sudo` exception above.
+If installed with Cargo or built from source, ensure Cargo's bin directory is in your PATH, then run `tenshi` and follow prompt.
 
-Utility will prompt to continue. For promptless execution, prepend `echo y |` to command.
+If built from the AUR, run `tenshi-rs`.
+
+For promptless execution, prepend `true |` to command.
 
 ## To do
 
@@ -64,4 +65,4 @@ Utility will prompt to continue. For promptless execution, prepend `echo y |` to
 
 Inspired by https://github.com/gbxyz/unbound-block-hosts
 
-A kind Rust Discord server user on #beginners
+A kind Rust Discord server user in `#beginners`
