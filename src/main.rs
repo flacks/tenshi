@@ -2,7 +2,7 @@ use std::error::Error;
 use std::io::{stdin, stdout, BufWriter, Write};
 
 fn main() {
-    println!("tenshi 0.1.0 :: Jean Lucas <jean@4ray.co>\n");
+    println!("tenshi 0.1.4 :: Jean Lucas <jean@4ray.co>\n");
 
     println!("This utility will fetch Steven Black's adware + malware hosts file and generate Unbound local-data from it\n");
 
