@@ -15,7 +15,7 @@ You will want to add `include: "local-blocking-data.conf"` to your Unbound confi
 
 ### Prerequisites
 
-Install either [rustup](https://rustup.rs) or `rust` using your favorite package manager. Tenshi is known to build against Rust 1.34.2.
+Install either [rustup](https://rustup.rs) or `rust` using your favorite package manager. Tenshi is known to build against Rust 1.35.
 
 Tenshi must be run as a user that has write access to `/etc/unbound/local-blocking-data.conf`.
 
@@ -43,23 +43,21 @@ makepkg -i
 
 ## Synopsis
 
-See note on write access in the **Prerequisites** section.
+If installed with Cargo or built from source, ensure Cargo's bin directory is in your PATH.
 
-If installed with Cargo or built from source, ensure Cargo's bin directory is in your PATH, then run `tenshi` and follow prompt.
-
-If built from the AUR, run `tenshi-rs`.
-
-For promptless execution, prepend `true |` to command.
+Run `tenshi` and follow prompt. For promptless execution, prepend `true |` to command.
 
 ## To do
 
 - [ ] *Actually* support different hosts files
-  * Upstream variants
+  - [ ] Upstream variants
 - [ ] Custom hosts files support
 - [ ] Argument support
 - [ ] Quiet mode
 - [ ] Support changing data destination
-- [ ] Modularize code
+- [x] Modularize code
+- [ ] Detect if hosts file remains the same
+- [ ] Notify user of hosts file update, requiring Unbound reload
 
 ## Credits
 
